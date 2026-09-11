@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://REPLACE-WITH-YOUR-BACKEND-PROJECT.vercel.app/api/:path*"
+      "destination": "https://n.tulte.net/api/:path*"
     }
   ]
 }
