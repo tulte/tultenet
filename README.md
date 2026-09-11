@@ -49,14 +49,15 @@ Open the Vite URL (normally `http://localhost:5173`). Its development proxy send
 
 ## Deploy to Vercel
 
-Deploy this monorepo as **two Vercel projects**, connected to the same Git repository.
+Deploy this monorepo as **one Vercel project** (Vite frontend + FastAPI backend via [Vercel Services](https://vercel.com/docs/services)).
 
-1. Create the **backend** project. Set its **Root Directory** to `backend`; Vercel uses `backend/vercel.json`. Deploy it and copy its production URL, such as `https://tultenet-api.vercel.app`.
-2. In `frontend/vercel.json`, replace `REPLACE-WITH-YOUR-BACKEND-PROJECT` with the backend project's actual hostname. Commit that change.
-3. Create the **frontend** project. Set its **Root Directory** to `frontend`; Vercel builds the Vite app and applies its rewrite rule.
-4. Attach your domain to the frontend project. Requests to `https://your-domain.example/api/*` are transparently forwarded to the backend project.
+1. Import the Git repository into a single Vercel project.
+2. Leave **Root Directory** empty (repo root). Do **not** set it to `frontend` or `backend`.
+3. Deploy. Root `vercel.json` builds both services and routes `/api/*` to FastAPI and everything else to the React app.
+4. Attach your domain (for example `n.tulte.net`) to that project.
+5. Turn **Deployment Protection** off for Production so `/api/*` is publicly reachable.
 
-After changing the backend URL in the frontend configuration, redeploy the frontend. Test `https://your-domain.example/api/health` and then the frontend page.
+Test `https://your-domain.example/api/health`, then open the frontend page.
 
 ## Endpoints
 
