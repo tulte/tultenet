@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://n.tulte.net/api/:path*"
+      "destination": "https://tultenet-btqg23hn2-tulte.vercel.app/api/:path*"
     }
   ]
 }
